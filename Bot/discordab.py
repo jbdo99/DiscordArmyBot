@@ -19,7 +19,7 @@ import logging
 import os
 import time
 import sys
-import youtube-dl
+import youtube_dl
 from discord import opus
 logging.basicConfig(level=logging.INFO)
 logging.basicConfig(filename='log.txt',level=logging.INFO)
@@ -44,16 +44,15 @@ def is_me(m):
     return m.author == client.user
 
 
+
 @client.async_event
 def on_ready():
     print('Connected on discord')
     print(client.user.name)
     print("id : ",client.user.id)
-    yield from client.change_presence(game=discord.Game(name="Ready")
+    yield from client.change_presence(game=discord.Game(name="Ready"))
+    print ('Ready')
     return
-
-
-
 
 
 
