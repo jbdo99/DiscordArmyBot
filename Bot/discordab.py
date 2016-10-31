@@ -43,7 +43,7 @@ def load_opus_lib(opus_libs=OPUS_LIBS):
 def is_me(m):
     return m.author == client.user
 
-
+is_c_co = False
 
 @client.async_event
 def on_ready():
@@ -53,6 +53,32 @@ def on_ready():
     yield from client.change_presence(game=discord.Game(name="Ready"))
     print ('Ready')
     return
+
+@client.async_event
+def on_message(message):
+    if message.author.id == client.user.id:
+        return
+
+    if message.content.split()[0]=="Join":
+        global is_c_co
+        global voice
+        voice = yield from client.join_voice_channel(message.author.voice.voice_channel)
+        yield from client.delete_message(message)
+        is_c_co=True
+
+    if message.content.split()[0]=="Play":
+        global is_c_co
+        global voice
+        global player
+        if is_c_co==True:
+            player = yield from voice.create_ytdl_player(message.content.split()[1])
+            player.start()
+        else:
+            voice = yield from client.join_voice_channel(message.author.voice.voice_channel)
+            player = yield from voice.create_ytdl_player(message.content.split()[1])
+            player.start()
+
+
 
 
 
