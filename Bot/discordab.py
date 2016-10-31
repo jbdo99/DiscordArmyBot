@@ -38,8 +38,11 @@ def load_opus_lib(opus_libs=OPUS_LIBS):
             opus.load_opus(opus_lib)
             return
         except OSError:
-            client.captureException()
             pass
+
+def is_me(m):
+    return m.author == client.user
+
 
 @client.async_event
 def on_ready():
@@ -47,28 +50,31 @@ def on_ready():
     print(client.user.name)
     print("id : ",client.user.id)
     yield from client.change_presence(game=discord.Game(name="Ready")
-    print ('Ready')
     return
 
 
 
-@client.async_event
-def on_resumed():
-    logging.info('Resumed')
-    hard = discord.Object(id="178882236324642816")
-    yield from client.send_message(hard, "Resumed")
-
-@client.async_event
-def on_member_remove(member):
-    yield from client.send_message(member, 'Byeeeee ;)')
-
-@client.async_event
-def on_member_join(member):
-    yield from client.send_message(member, 'Salut :)')
 
 
-@client.async_event
-def on_server_remove(server):
-    logging.warning('un serveur a été supprimer de la liste des serveur')
+
+
+
+
+
+
+if os.path.isfile("config"):
+    credi = open("config", "r").read()
+    conf = credi.split("\n")
+    if conf[0] == 'username@email.com' or conf[1] == 'passswordPASSWORD':
+        print("Nom d'utilisateur/Mot de passe de base, veuillez le/les changer.")
+    else:
+        client.run(conf[0],conf[1])
+else:
+    file = open("config", "w")
+    file.write("username@email.com\n")
+    file.write("passswordPASSWORD")
+    file.close()
+    print("Aucun fichier de configuration trouvé.")
+    print("Il a été créé, veuillez le modifier avec les identifiants de votre bot")
 
 
