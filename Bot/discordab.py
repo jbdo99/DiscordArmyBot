@@ -17,6 +17,7 @@ import asyncio
 import discord
 import logging
 import os
+import subprocess
 import time
 import sys
 import youtube_dl
@@ -25,6 +26,13 @@ logging.basicConfig(level=logging.INFO)
 logging.basicConfig(filename='log.txt',level=logging.INFO)
 client = discord.Client()
 servers = list(client.servers)
+
+if (os.name=="posix"):
+    SPE="LMAC"
+elif (os.name=="nt"):
+    SPE="WIN"
+else:
+    print("Systeme non reconnu, merci de poser une issue sur le github")
 
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
 
