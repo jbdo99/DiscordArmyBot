@@ -89,25 +89,7 @@ def on_message(message):
 
 
 
+client.run('MjQ4ODg0MDQ4NDgxNjE1ODcz.Cw-O2g.k6AWKhixwgkqnBX-CDOlMu59iso')
 
-
-
-
-
-
-if os.path.isfile("config"):
-    credi = open("config", "r").read()
-    conf = credi.split("\n")
-    if conf[0] == 'username@email.com' or conf[1] == 'passswordPASSWORD':
-        print("Nom d'utilisateur/Mot de passe de base, veuillez le/les changer.")
-    else:
-        client.run(conf[0],conf[1])
-else:
-    file = open("config", "w")
-    file.write("username@email.com\n")
-    file.write("passswordPASSWORD")
-    file.close()
-    print("Aucun fichier de configuration trouvé.")
-    print("Il a été créé, veuillez le modifier avec les identifiants de votre bot")
 
 
