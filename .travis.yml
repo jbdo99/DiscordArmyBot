@@ -2,10 +2,8 @@ language: python
 python:
   - "3.5"
 # command to install dependencies
-install: "pip3 install -r requirements.txt"
+install:
+-"pip3 install -r requirements.txt"
+-"cd Bot"
 # command to run tests
-<<<<<<< HEAD
-script: Bot/discordab
-=======
 script: discordab.py
->>>>>>> 6ca9d3c32f75546be78f6ca1f607677b47d47365
