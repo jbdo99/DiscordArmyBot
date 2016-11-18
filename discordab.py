@@ -53,6 +53,16 @@ def is_me(m):
 
 is_c_co = False
 
+@client.event
+async def my_background_task():
+	await client.wait_until_ready()
+	counter = 0
+	channel = discord.Object(id='178882236324642816')
+	while not client.is_closed:
+		await asyncio.sleep(300) # task runs every 30 Minutes
+		counter += 10
+		await client.send_message(channel,'Active for : '+str(counter)+' Minutes')
+
 @client.async_event
 def on_ready():
     print('Connected on discord')
@@ -89,7 +99,7 @@ def on_message(message):
 
 
 
-client.run('MjQ4ODg0MDQ4NDgxNjE1ODcz.Cw-O2g.k6AWKhixwgkqnBX-CDOlMu59iso')
+client.run('mrjbdo99@gmail.com','Progcle2014')
 
 
 
