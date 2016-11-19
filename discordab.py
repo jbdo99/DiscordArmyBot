@@ -35,7 +35,7 @@ else:
 
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
 
-opus.load_opus(OPUS_LIBS)
+discord.opus.load_opus(OPUS_LIBS)
 
 def is_me(m):
     return m.author == client.user
