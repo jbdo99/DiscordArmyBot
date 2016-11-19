@@ -2,6 +2,8 @@ language: python
 python:
   - "3.5"
 # command to install dependencies
-install: "pip3 install -r requirements.txt"
+install: 
+  - pip3 install -r requirements.txt
+  - pip3 install discord.py[voice]
 # command to run tests
 script: "python3 discordab.py"
