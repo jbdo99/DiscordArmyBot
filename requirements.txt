@@ -2,7 +2,7 @@ aiohttp==1.0.5
 async-timeout==1.1.0
 asyncio==3.4.3
 contextlib2==0.5.4
-discord.py==0.14.2
+discord.py[voice]==0.14.2
 dnspython==1.15.0
 dnspython3==1.15.0
 feedparser==5.2.1
