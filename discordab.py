@@ -21,7 +21,6 @@ import subprocess
 import time
 import sys
 import youtube_dl
-from discord import opus
 logging.basicConfig(level=logging.INFO)
 logging.basicConfig(filename='log.txt',level=logging.INFO)
 client = discord.Client()
