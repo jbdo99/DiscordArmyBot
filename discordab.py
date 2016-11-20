@@ -35,8 +35,17 @@ else:
 
 OPUS_LIBS = ['libopus-0.x86.dll', 'libopus-0.x64.dll', 'libopus-0.dll', 'libopus.so.0', 'libopus.0.dylib']
 
-discord.opus.load_opus(OPUS_LIBS)
 
+def load_opus_lib():
+    if opus.is_loaded():
+        return True
+
+    for opus_lib in opus_libs:
+        try:
+            opus.load_opus(opus_lib)
+            return
+        except OSError:
+            pass
 def is_me(m):
     return m.author == client.user
 
