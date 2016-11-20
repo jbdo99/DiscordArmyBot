@@ -46,6 +46,10 @@ def load_opus_lib():
             return
         except OSError:
             pass
+
+
+if not discord.opus.is_loaded():
+    discord.opus.load_opus()
 def is_me(m):
     return m.author == client.user
 
